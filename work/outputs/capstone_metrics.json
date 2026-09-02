@@ -1,0 +1,12 @@
+{
+  "test_rows": 11310,
+  "test_declining_base_rate": 0.5358974358974359,
+  "baseline_precision_at_50": 0.68,
+  "model_precision_at_50": 1.0,
+  "baseline_f1": 0.24461538461538462,
+  "model_f1": 0.8938891885643832,
+  "model_roc_auc": 0.9677817026861819,
+  "model_average_precision": 0.9733846377055587,
+  "random_seed": 42,
+  "validation": "client_grouped_holdout"
+}
