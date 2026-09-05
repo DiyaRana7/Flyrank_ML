@@ -304,12 +304,3 @@ The results support using machine learning as a prioritization layer for content
 
 The recommended workflow is model-assisted prioritization followed by human review and measurement, rather than fully automated content decisions.
 
-
-### Now do only this:
-
-**1.** `Ctrl + A` in the GitHub editor  
-**2. Paste the block above  
-**3. Click **Preview**  
-**4. Check that `### 3.2 Features` is a normal heading, NOT inside the code box.**
-
-If Preview looks correct, **then** click Commit changes.
