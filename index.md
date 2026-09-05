@@ -142,34 +142,69 @@ Grouping by client provides a stronger test of whether the model can generalize 
 
 ## 4. Results
 ### 4.1 Model Performance
-Metric	Random Forest
-Accuracy	0.878
-Precision	0.839
-Recall	0.957
-F1	0.894
-ROC-AUC	0.968
-Average Precision	0.973
-Precision@50	1.000
+
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Random Forest</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Accuracy</td><td>0.878</td></tr>
+<tr><td>Precision</td><td>0.839</td></tr>
+<tr><td>Recall</td><td>0.957</td></tr>
+<tr><td>F1</td><td>0.894</td></tr>
+<tr><td>ROC-AUC</td><td>0.968</td></tr>
+<tr><td>Average Precision</td><td>0.973</td></tr>
+<tr><td>Precision@50</td><td>1.000</td></tr>
+</tbody>
+</table>
 
 The high recall indicates that the model identified most of the pages belonging to the declining class in the test set.
 
-The Precision@50 of 1.000 is particularly useful for prioritization because all of the top 50 ranked test pages were labeled as declining under the evaluation target.
+The **Precision@50 of 1.000** is particularly useful for prioritization because all of the top 50 ranked test pages were labeled as declining under the evaluation target.
+
+---
 
 ### 4.2 Baseline Comparison
-Metric	Week-4 Baseline	Random Forest
-Accuracy	0.479	0.878
-Precision	0.549	0.839
-Recall	0.157	0.957
-F1	0.245	0.894
-Precision@50	0.680	1.000
+
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Week-4 Baseline</th>
+<th>Random Forest</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Accuracy</td><td>0.479</td><td><strong>0.878</strong></td></tr>
+<tr><td>Precision</td><td>0.549</td><td><strong>0.839</strong></td></tr>
+<tr><td>Recall</td><td>0.157</td><td><strong>0.957</strong></td></tr>
+<tr><td>F1</td><td>0.245</td><td><strong>0.894</strong></td></tr>
+<tr><td>Precision@50</td><td>0.680</td><td><strong>1.000</strong></td></tr>
+</tbody>
+</table>
 
 The Random Forest substantially outperformed the rule-based baseline across all reported metrics.
+
+<p align="center">
+<img src="work/figures/capstone_model_vs_baseline.png" alt="Model vs Baseline comparison" width="800">
+</p>
+
+---
 
 ### 4.3 Feature Importance
 
 Feature importance was examined to understand which signals contributed most strongly to the Random Forest's decisions.
 
+<p align="center">
+<img src="work/figures/capstone_feature_importance.png" alt="Random Forest feature importance" width="800">
+</p>
+
 Feature importance should be interpreted as a model diagnostic rather than evidence of causality.
+
+---
 
 ### 4.4 Confusion Matrix
 
@@ -177,7 +212,9 @@ The evaluation also included a confusion matrix to examine the model's classific
 
 The confusion matrix is available in the capstone notebook:
 
-work/notebooks/capstone.ipynb
+`work/notebooks/capstone.ipynb`
+
+---
 
 ## 5. Action Prioritization
 
