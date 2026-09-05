@@ -80,8 +80,8 @@ The classification target was created as:
 80   ```python
 81   y = (df["trend_direction"] == "down").astype(int)
 82   ```
-83
-84   ### 3.2 Features
+
+### 3.2 Features
 
 The model used numeric and derived content-performance features while excluding identifiers and direct target fields.
 
@@ -95,7 +95,7 @@ client_id
 
 A leakage audit was also performed to check for suspicious target-related feature names.
 
-3.3 Baseline
+### 3.3 Baseline
 
 A simple rule-based baseline was implemented using content freshness, visibility, impressions, and search position.
 
@@ -115,7 +115,7 @@ Otherwise:
 
 MONITOR
 
-3.4 Machine Learning Model
+### 3.4 Machine Learning Model
 
 A Random Forest classifier was selected using:
 
@@ -123,7 +123,7 @@ A Random Forest classifier was selected using:
 Random state = 42
 Balanced class weights
 Parallel processing with n_jobs=-1
-3.5 Validation Strategy
+### 3.5 Validation Strategy
 
 A client-grouped train/test split was used.
 
@@ -140,8 +140,8 @@ Test: 53.6%
 
 Grouping by client provides a stronger test of whether the model can generalize beyond the clients used for training.
 
-4. Results
-4.1 Model Performance
+## 4. Results
+### 4.1 Model Performance
 Metric	Random Forest
 Accuracy	0.878
 Precision	0.839
@@ -155,7 +155,7 @@ The high recall indicates that the model identified most of the pages belonging 
 
 The Precision@50 of 1.000 is particularly useful for prioritization because all of the top 50 ranked test pages were labeled as declining under the evaluation target.
 
-4.2 Baseline Comparison
+### 4.2 Baseline Comparison
 Metric	Week-4 Baseline	Random Forest
 Accuracy	0.479	0.878
 Precision	0.549	0.839
@@ -165,13 +165,13 @@ Precision@50	0.680	1.000
 
 The Random Forest substantially outperformed the rule-based baseline across all reported metrics.
 
-4.3 Feature Importance
+### 4.3 Feature Importance
 
 Feature importance was examined to understand which signals contributed most strongly to the Random Forest's decisions.
 
 Feature importance should be interpreted as a model diagnostic rather than evidence of causality.
 
-4.4 Confusion Matrix
+### 4.4 Confusion Matrix
 
 The evaluation also included a confusion matrix to examine the model's classification behavior across the declining and non-declining classes.
 
@@ -179,7 +179,7 @@ The confusion matrix is available in the capstone notebook:
 
 work/notebooks/capstone.ipynb
 
-5. Action Prioritization
+## 5. Action Prioritization
 
 The final workflow converts model scores and content signals into an actionable review queue.
 
@@ -213,7 +213,7 @@ Otherwise: Lower priority based on baseline
 
 The resulting queue can help content teams focus investigation on a smaller set of pages instead of manually reviewing the entire dataset.
 
-6. Limitations
+## 6. Limitations
 
 This project has several important limitations.
 
@@ -241,7 +241,9 @@ Evaluation limitations
 
 The model and baseline were evaluated on a single client-grouped train/test split. Additional validation across multiple grouped splits and future time windows would provide stronger evidence of robustness.
 
-7. Ranked Recommendations
+
+
+### 7. Ranked Recommendations
 1. Prioritize high-confidence pages
 
 Start with pages receiving strong model scores, especially those near the top of the ranking queue.
@@ -262,7 +264,7 @@ The model should recommend which pages deserve attention rather than automatical
 
 Future iterations should evaluate whether prioritized pages actually improve after controlled refresh experiments.
 
-8. Reproducibility
+### 8. Reproducibility
 
 The project repository contains the notebooks, report, figures, and public-safe output artifacts used in this analysis.
 
@@ -280,7 +282,7 @@ work/notebooks/w04_signal_audit.ipynb
 work/notebooks/w05_model.ipynb
 work/notebooks/w06_validation_audit.ipynb
 work/notebooks/w07_action_playbook.ipynb
-Public-safe artifacts
+##Public-safe artifacts
 work/outputs/capstone_metrics.json
 work/outputs/capstone_action_summary.csv
 work/figures/capstone_model_vs_baseline.png
@@ -290,13 +292,13 @@ The analysis uses a fixed random seed and client-grouped validation split to mak
 
 No client names, domains, URLs, private search queries, credentials, or raw private exports are included in the public-facing analysis.
 
-Acknowledgments & Data Credit
+## Acknowledgments & Data Credit
 
 Built on the FlyRank ML Internship dataset
 
 FlyRank: https://flyrank.ai
 
-Conclusion
+## Conclusion
 
 This project demonstrates a practical machine-learning approach for prioritizing content refresh opportunities. The Random Forest model substantially outperformed the rule-based baseline and achieved strong ranking-oriented performance, including 100% Precision@50 on the test set.
 
